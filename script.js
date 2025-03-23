@@ -8,6 +8,8 @@ const Planet = document.getElementById("Planet");
 const Star = document.getElementById("Star");
 const canvas = document.getElementById("lightCurveCanvas");
 const ctx = canvas.getContext("2d");
+let intervalID = null; // Variabile per gestire il setInterval
+
 
 // Funzione per calcolare la posizione in base alle dimensioni dello schermo
 function updateplanetPosition(distance) {
@@ -73,7 +75,18 @@ function updateBrightness(x) {
     drawGraph();
 }
 
-setInterval(updatePlanetPosition, 20);
+function startGraphUpdate() {
+    if (intervalID) clearInterval(intervalID); // Evita duplicazioni fermando l'intervallo precedente
+
+    intervalID = setInterval(() => {
+        updateBrightness(parseInt(Slider.value));
+    }, 20);
+}
+
+// Avvia il grafico una sola volta
+startGraphUpdate();
+
+
 
 function drawGraph() {
 
@@ -137,7 +150,9 @@ updateplanetPosition(parseInt(slider.value));
 
 Slider.addEventListener("input", () => {
     updatePlanetPosition(parseInt(Slider.value));
+    startGraphUpdate(); // Riavvia l'aggiornamento una sola volta
 });
+
 
 updatePlanetPosition(parseInt(Slider.value));
 
