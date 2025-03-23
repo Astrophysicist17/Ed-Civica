@@ -112,6 +112,8 @@ section {
     transition: left 0.3s ease-out;
 }
 
+/**/
+
 #simulation-container {
     position: relative;
     width: 400px;
