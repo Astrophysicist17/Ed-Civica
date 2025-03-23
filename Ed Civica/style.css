@@ -141,6 +141,7 @@ section {
     background-color: #fbfbf6;
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    transition: left 0.28s ease-out;
 }
 
 
