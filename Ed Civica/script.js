@@ -161,6 +161,9 @@ updatePlanetPosition(parseInt(Slider.value));
 window.addEventListener('resize', () => updateplanetPosition(slider.value));
 updateplanetPosition(slider.value);
 
+window.addEventListener('resize', () => updatePlanetPosition(Slider.value));
+updatePlanetPosition(Slider.value);
+
 
 
 
