@@ -129,7 +129,7 @@ function drawGraph() {
     // Disegna curva continua
     ctx.strokeStyle = "yellow";
     ctx.beginPath();
-    for (let i = 0; i < brightnessHistory.length; i++) {
+    for (i = 0; i < brightnessHistory.length; i++) {
         const graphX = 50 + (i / 600) * 600;
         const graphY = 200 - brightnessHistory[i] * 100;
         if (i === 0) {

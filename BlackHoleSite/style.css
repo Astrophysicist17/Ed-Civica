@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+}
+
+section{
+    background-color: black;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: white;
+}
+
+#simulationBox {
+    width: 1800px;
+    height: 1000px;
+    border: 1px solid white;
+}
+
+#BlackHole{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid white;
+    top: 50%;
+    left: 50%;
+}
+
+canvas{
+    background-color: black;
+    border: 1px solid white;
+}
