@@ -30,3 +30,7 @@ canvas{
     background-color: black;
     border: 1px solid white;
 }
+
+ctx{
+    border: 1px solid white;
+}

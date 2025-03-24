@@ -6,22 +6,17 @@ const Xp = 900; // Particella in centro a destra
 const Yp = 100; // Particella sopra il centro
 let Xn = Xp;
 let Yn = Yp;
-let V = 100;
-const G = 6.6e-11;
-const M = 1e10;
-const centerX = 900;
-const centerY = 500;
-let distance = Math.sqrt(Math.pow(centerX - Xp, 2) + Math.pow(centerY - Yp, 2));
+let V = 50;
 let theta = Math.PI/3;
-let alfa = theta + Math.PI/2;
 let Vx = V * Math.cos(theta);
 let Vy = V * Math.sin(theta);
+let distance = Math.sqrt(Math.pow((Xn-900),2)+Math.pow(Yn-500),2);
 
-particlesMove(Xp, Yp);
+particlesMove(Xn, Yn);
 let i = 0;
 
 function updateParticlePosition() {
-    const t = i++ / 100;
+    let t = i++ / 100;
     updateVelocity(t);
     
     Xn = Xp + (Vx * t);
@@ -32,14 +27,8 @@ function updateParticlePosition() {
 }
 
 function updateVelocity(T){
-    if((Vx * T - Vx * (T - 0.01)>0 && Xn < 900) || (Vx * T - Vx * (T - 0.01)<0 && Xn > 900))
-        Vx = Vx + (G*M/Math.pow(distance,2))*T;
-    else
-        Vx = Vx - (G*M/Math.pow(distance,2))*T;
-    if((Vy * T - Vy * (T - 0.01)>0 && Yn < 500) || (Vy * T - Vy * (T - 0.01)<0 && Yn > 500))
-        Vy = Vy + (G*M/Math.pow(distance,2))*T;
-    else
-        Vy = Vy - (G*M/Math.pow(distance,2))*T;
+    Vx += G * M / (distance * distance)*T;
+    Vy += G * M / (distance * distance)*T;
 }
 
 function particlesMove(x, y) {
@@ -47,7 +36,8 @@ function particlesMove(x, y) {
     ctx.fillStyle = "white";
     ctx.beginPath();
     ctx.arc(x, y, 2, 0, Math.PI * 2); // Punto visibile
+    ctx.arc(900, 500, 10, 0, Math.PI * 2);
     ctx.fill();
 }
 
-setInterval(updateParticlePosition,10)
+setInterval(updateParticlePosition,10);
