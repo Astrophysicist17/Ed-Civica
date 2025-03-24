@@ -3,10 +3,10 @@ const ctx = canvas.getContext("2d");
 canvas.width = 1800;
 canvas.height = 1000;
 const Xp = 900;
-const Yp = 250;
-const V = 80;
-const G = 6.6e-5;
-const M = 1e9;
+const Yp = 400;
+const V = 10;
+const G = 6.6e-6;
+const M = 1e8;
 const theta = Math.PI / 6;
 
 let particlePosition = [Xp, Yp];
@@ -20,12 +20,12 @@ function updateParticlePosition() {
     } else {
         let dx = Math.abs(particlePosition[0] - 900);
         let dy = Math.abs(particlePosition[1] - 500);
-        let distance = Math.sqrt(dx * dx + dy * dy);
+        let distance = 50 * Math.sqrt(dx * dx + dy * dy);
         
         if(distance === 0) return;
 
-        Ax =  (G * M) / (distance * distance);
-        Ay =  (G * M) / (distance * distance);
+        Ax =  (G * M) / (distance);
+        Ay =  (G * M) / (distance);
         
         Vx = V * Math.cos(theta) + signAccX(particlePosition[0]) * Ax * t;
         Vy = V * Math.sin(theta) + signAccY(particlePosition[1]) * Ay * t;
