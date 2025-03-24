@@ -2,33 +2,37 @@ const canvas = document.getElementById("simulationBox");
 const ctx = canvas.getContext("2d");
 canvas.width = 1800;
 canvas.height = 1000;
-const Xp = 900; // Particella in centro a destra
+const Xp = 700; // Particella in centro a destra
 const Yp = 100; // Particella sopra il centro
-let Xn = Xp;
-let Yn = Yp;
-let V = 50;
-let theta = Math.PI/3;
-let Vx = V * Math.cos(theta);
-let Vy = V * Math.sin(theta);
-let distance = Math.sqrt(Math.pow((Xn-900),2)+Math.pow(Yn-500),2);
-
-particlesMove(Xn, Yn);
+const theta = Math.PI/3;
+const alfa = theta - Math.PI/2; 
 let i = 0;
 
 function updateParticlePosition() {
-    let t = i++ / 100;
-    updateVelocity(t);
-    
-    Xn = Xp + (Vx * t);
-    Yn = Yp + (Vy * t);
-    
-    particlesMove(Xn,Yn);
-    
-}
+    const t = i++ / 10;
+    if(t === 0){
+        const Xn = Xp, Yn = Yp;
+        
+        particlesMove(Xn,Yn);
+    }
+    else{
+        const V = 50;
+        const theta = theta + Math.asin((Math.abs(500-Yn))/distance);
+        const alfa = theta - Math.PI/2;
+        const Vx = V * Math.cos(alfa);
+        const Vy = V * Math.sin(alfa);
+        const Xn = Xp + (Vx * t);
+        const Yn = Yp + (Vy * t);
+        const distance = Math.sqrt(Math.pow((Xn-900),2)+Math.pow(Yn-500),2);
 
-function updateVelocity(T){
-    Vx += G * M / (distance * distance)*T;
-    Vy += G * M / (distance * distance)*T;
+
+
+
+        particlesMove(Xn,Yn);
+    }
+    
+    
+    
 }
 
 function particlesMove(x, y) {
