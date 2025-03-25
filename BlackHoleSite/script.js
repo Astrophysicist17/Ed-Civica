@@ -1,66 +1,62 @@
 const canvas = document.getElementById("simulationBox");
 const ctx = canvas.getContext("2d");
-canvas.width = 1800;
-canvas.height = 1000;
-const Xp = 900;
-const Yp = 400;
-const V = 10;
-const G = 6.6e-6;
-const M = 1e8;
-const theta = Math.PI / 6;
+canvas.width = 1920;
+canvas.height = 1080;
 
-let particlePosition = [Xp, Yp];
-let i = 0;
+const G = 6.6e-7;
+const M = 3.5e10;
+const numParticles = 5000;
+let particles = [];
 
-function updateParticlePosition() {
-    let t = i++/40;
-    if (t === 0) {
-        particlePosition[0] = Xp;
-        particlePosition[1] = Yp;
-    } else {
-        let dx = Math.abs(particlePosition[0] - 900);
-        let dy = Math.abs(particlePosition[1] - 500);
-        let distance = 50 * Math.sqrt(dx * dx + dy * dy);
-        
-        if(distance === 0) return;
-
-        Ax =  (G * M) / (distance);
-        Ay =  (G * M) / (distance);
-        
-        Vx = V * Math.cos(theta) + signAccX(particlePosition[0]) * Ax * t;
-        Vy = V * Math.sin(theta) + signAccY(particlePosition[1]) * Ay * t;
-
-        particlePosition[0] = Xp + Vx * t;
-        particlePosition[1] = Yp + Vy * t;
-    }
-    particlesMove(particlePosition[0], particlePosition[1]);
+// Inizializza le particelle con posizioni e velocità casuali
+for (let i = 0; i < numParticles; i++) {
+    let angle = Math.random() * 2 * Math.PI;
+    let speed = 0.5 + Math.random() * 15;
+    let distance = 200 + Math.random() * 300;
+    
+    particles.push({
+        x: canvas.width / 2 + distance * Math.cos(angle),
+        y: canvas.height / 2 + distance * Math.sin(angle),
+        vx: speed * Math.sin(angle),
+        vy: -speed * Math.cos(angle)
+    });
 }
 
-function signAccX(X){
-    if(X < 900) return 1;
-    else if (X > 900) return -1;
-        else if(X === 900) return 0;
-}
-
-function signAccY(Y){
-    if(Y < 500) return 1;
-    else if (Y > 500) return -1;
-        else if(Y === 500) return 0;
-}
-
-function particlesMove(x, y) {
+function updateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "white";
 
+    // Disegna il punto centrale (massa centrale)
     ctx.beginPath();
-    ctx.arc(x, y, 2, 0, Math.PI * 2); // Punto mobile
+    ctx.arc(canvas.width / 2, canvas.height / 2, 4, 0, Math.PI * 2);
     ctx.closePath();
     ctx.fill();
 
-    ctx.beginPath();
-    ctx.arc(900, 500, 10, 0, Math.PI * 2); // Punto centrale
-    ctx.closePath();
-    ctx.fill();
+    particles.forEach(p => {
+        let dx = p.x - canvas.width / 2;
+        let dy = p.y - canvas.height / 2;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance === 0) return;
+
+        // Calcolo dell'accelerazione gravitazionale
+        let Ax = (-G * M * dx) / (distance * distance * distance);
+        let Ay = (-G * M * dy) / (distance * distance * distance);
+
+        // Aggiornamento della velocità
+        p.vx += Ax;
+        p.vy += Ay;
+
+        // Aggiornamento della posizione
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Disegna la particella
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+    });
 }
 
-setInterval(updateParticlePosition, 10);
+setInterval(updateParticles, 1);
