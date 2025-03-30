@@ -53,7 +53,7 @@ function updateParticles() {
 
         // Disegna la particella
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
         ctx.closePath();
         ctx.fill();
     });
