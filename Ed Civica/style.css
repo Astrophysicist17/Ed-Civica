@@ -170,3 +170,11 @@ canvas {
 html {
     scroll-behavior: smooth;
  }
+
+img{
+    margin: 20px auto;
+    width: 60% auto;
+    max-width: 1400px;
+    padding: 20px;
+    border-radius: 20px;
+}
