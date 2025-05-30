@@ -1,0 +1,180 @@
+/* Stile generale */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: url(background-sfondo.jpg);
+    opacity: none;
+    color: white;
+}
+
+header {
+    background-image: linear-gradient(rgb(15, 25, 37,1),rgb(15, 25, 37,0),rgb(15, 25, 37,1));
+    padding: 20px;
+    position: relative;
+    top: 0;
+    z-index: 100;
+}
+
+main{
+    background-image: radial-gradient(circle,rgba(0, 0, 0, 0) ,rgb(0, 0, 0,1));
+}
+
+h1 {
+    margin: 0;
+    color: #7facda;
+}
+
+h2 {
+    margin: 0;
+    color: #7facda;
+}
+
+h3 {
+    margin: 0;
+    color: #7facda;
+}
+
+/* Lista di navigazione senza simboli */
+.nav-list {
+    list-style: none;  /* Rimuove i punti della lista */
+    padding: 0;
+    margin-top: 10px;
+}
+
+.nav-list li {
+    margin: 10px 0;
+}
+
+/* Pulsanti di navigazione */
+.nav-button {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding: 12px;
+    background-color: #dec990;
+    color: #1f2833;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+    background-color: #fbfbf6;
+    transform: scale(1.05);
+}
+
+
+section {
+    margin: 20px auto;
+    width: 60% auto;
+    max-width: 1400px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(15, 25, 37, 0.778);
+    /*background-image: radial-gradient(circle,rgb(15, 25, 37,0) ,rgb(15, 25, 37,1));*/
+}
+
+/* Sistema interattivo */
+#star-system {
+    position: relative;
+    width: 400px;
+    height: 150px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 12px;
+    background-color: #0b0c10;
+    opacity: none;
+}
+
+#star {
+    width: 65px;
+    height: 65px;
+    background-color: rgb(223, 183, 7);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+}
+
+#planet {
+    width: 14px;
+    height: 14px;
+    background-color: blue;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.3s ease-out;
+}
+
+#simulation-container {
+    position: relative;
+    width: 400px;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 12px;
+    background-color: #0b0c10;
+    border: none;
+}
+
+#Star {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 115px;
+    height: 115px;
+    background-color: rgb(223, 183, 7);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#Planet {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #fbfbf6;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.28s ease-out;
+}
+
+
+input[type="range"] {
+    width: 80%;
+    margin-top: 10px;
+}
+
+Input[type="Range"] {
+    width: 80%;
+    margin-top: 20px;
+}
+
+#zoneText {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #7facda;
+}
+
+canvas {
+    background-color: black;
+    border: 1px solid white;
+    margin-top: 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+ }
+
+img{
+    margin: 20px auto;
+    width: 60% auto;
+    max-width: 1400px;
+    padding: 20px;
+    border-radius: 20px;
+}
