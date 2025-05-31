@@ -2,27 +2,48 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: #0134662c;
   color: #1a1a1a;
   line-height: 1.6;
 }
 
 header {
-  background: linear-gradient(90deg, #35719c, #002961);
-  color: white;
+  background: linear-gradient(90deg, #79a2be, #103d7c);
+  color: rgb(229, 239, 247);
   padding: 2rem 1rem;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  height: 180px;
+  align-items: center;
+  display: block;
 }
+
+.logo {
+    position: relative;
+    left: -600px;
+    top: 50px;
+    width: 280px;
+}
+
+.logo1 {
+  position: relative;
+  left: 600px;
+  top: 50px;
+}
+
 
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  position: relative;
+  top: -70px;
 }
 
-header p {
-  font-size: 1.1rem;
+header h3 {
+  font-size: 1.4rem;
+  position: relative;
+  top: -70px;
 }
 
 main {
