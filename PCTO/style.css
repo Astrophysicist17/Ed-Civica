@@ -6,6 +6,10 @@ body {
   background-color: #0134662c;
   color: #1a1a1a;
   line-height: 1.6;
+  background-image: url(sfondo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header {
@@ -54,7 +58,7 @@ header h1 {
 }
 
 header h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   position: relative;
   top: -70px;
 }
